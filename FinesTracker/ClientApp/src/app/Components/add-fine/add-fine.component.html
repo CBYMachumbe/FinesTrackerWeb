@@ -1,0 +1,46 @@
+<form action="" class="form mat-app-background" (ngSubmit)="sendFine()">
+  <h2 class="mat-h2 mat-title">Post New Fine</h2>
+  <p>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Fine Title</mat-label>
+      <input matInput required maxlength="30" minlength="5" type="text"
+             placeholder="Title" [formControl]="fineTitleFormControl" id="fineTitle">
+      <mat-hint>Give your fine a helpful title</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline" class="full-width" color="primary">
+      <mat-label>Fine Description</mat-label>
+      <textarea matInput required maxlength="255" type="text"
+                minlength="20" placeholder="Description"
+                id="fineText" [formControl]="fineTextFormControl"></textarea>
+      <mat-hint>Give the fine a description</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <div class="row">
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Who is being fined</mat-label>
+        <mat-select required [(ngModel)]="fineeId" name="user" id="fineeId">
+          <mat-option *ngFor="let user of users" [value]="user.userId">{{ user.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+
+      <div class="row text-right" style="margin-top: 15px; margin-left: 40px">
+      <button mat-stroked-button ngbAutofocus color="primary" type="reset" (click)="modal.dismiss()">Cancel</button>
+      &nbsp;&nbsp;&nbsp;
+      <button mat-raised-button type="submit"
+              [disabled]="finePostFormGroup.invalid"
+              color="primary">Post Fine</button>
+     </div>
+
+    </div>
+  </div>
+</form>
+
+

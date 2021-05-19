@@ -1,0 +1,37 @@
+<mat-toolbar color="primary">
+  <span>Fine Tracker</span>
+
+  <span class="spacer"></span>
+
+  <button mat-button (click)="openAddModal(content)" ngbAutofocus>Post New Fine</button>
+
+  <button mat-icon-button class="" [matMenuTriggerFor]="menu">
+    <mat-icon matBadge="3" matBadgeColor="warn">monetization_on</mat-icon>
+  </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Pay Fine</button>
+      <button mat-menu-item
+              (click)="openConfirmModal(confirmContent)" ngbAutofocus>Confirm Payment</button>
+    </mat-menu>
+
+  <img src="../../../assets/Images/profile_icon.jpg" alt="" class="user">
+
+</mat-toolbar>
+
+
+<ng-template #content let-modal>
+  <div class="mat-app-background">
+    <div class="modal-body">
+      <app-add-fine [modal]="modal"></app-add-fine>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #confirmContent let-confirmModal>
+  <div class="mat-app-background">
+    <div class="modal-body">
+      <app-confirm-payment [modal]="confirmModal"></app-confirm-payment>
+    </div>
+  </div>
+</ng-template>

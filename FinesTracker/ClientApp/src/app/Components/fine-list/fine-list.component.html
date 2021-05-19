@@ -1,0 +1,3 @@
+<cdk-virtual-scroll-viewport class="view-port" [itemSize]="200 * 10">
+  <app-fine *cdkVirtualFor="let finePost of finePost$" [finePost]="finePost"></app-fine>
+</cdk-virtual-scroll-viewport>

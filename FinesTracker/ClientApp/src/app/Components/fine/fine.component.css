@@ -1,0 +1,14 @@
+.user {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.height{
+  height: 200px;
+}

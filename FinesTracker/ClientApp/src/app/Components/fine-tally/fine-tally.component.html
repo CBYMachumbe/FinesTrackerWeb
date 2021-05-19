@@ -1,0 +1,27 @@
+<div *ngIf="tallie$ | async as tallies">
+  <table mat-table [dataSource]="tallies" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="User">
+      <th mat-header-cell *matHeaderCellDef> User </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Total Fines">
+      <th mat-header-cell *matHeaderCellDef> Total Fines </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalFines}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Fines Due">
+      <th mat-header-cell *matHeaderCellDef> Fines Due </th>
+      <td mat-cell *matCellDef="let element"> {{element.finesDue}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+
+
+
