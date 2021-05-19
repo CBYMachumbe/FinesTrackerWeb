@@ -1,5 +1,8 @@
 .view-port{
-  height: 100%;
+  height: 90%;
   width: 100%;
+}
 
+.hide-y-bar{
+  overflow-x: hidden;
 }

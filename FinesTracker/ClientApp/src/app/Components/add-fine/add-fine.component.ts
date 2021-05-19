@@ -78,8 +78,7 @@ export class AddFineComponent implements OnInit{
 
     this.finePostFormGroup = this.formBuilder.group({
       fineTitle: this.fineTitleFormControl,
-      fineText: this.fineTextFormControl,
-      fineeId: this.fineeIdFormControl
+      fineText: this.fineTextFormControl
     });
   }
 
