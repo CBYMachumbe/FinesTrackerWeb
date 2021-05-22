@@ -1,5 +1,6 @@
 <cdk-virtual-scroll-viewport autosize orientation="vertical" class="view-port hide-x-bar" [itemSize]="200">
-  <app-fine *cdkVirtualFor="let finePost of finePost$" [finePost]="finePost" [currentUser]="currentUser"></app-fine>
+  <app-fine *cdkVirtualFor="let finePost of finePost$" [finePost]="finePost"
+            [currentUser]="currentUser" [modalContent]="content"></app-fine>
 
   <div *ngIf="isLoading">
     <mat-spinner diameter="70" style="margin:0 auto;"></mat-spinner>
@@ -13,3 +14,10 @@
   </div>
 </cdk-virtual-scroll-viewport>
 
+<ng-template #content let-modal>
+  <div class="mat-app-background">
+    <div class="modal-body">
+      <app-edit-fine [modal]="modal"></app-edit-fine>
+    </div>
+  </div>
+</ng-template>

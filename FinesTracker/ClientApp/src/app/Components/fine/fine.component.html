@@ -23,7 +23,9 @@
     <p class="h3 m-0">{{ finePost.fine.fineTitle }}</p>
     <div class="d-flex flex-row m-0">
       <div class="p-2"><p>{{ finePost.fine.fineText }}</p></div> <!--//keep description at 255 characters-->
-      <div *ngIf="isPostedByCurrentUser()" class="p-2 ml-auto align-content-end"><button mat-stroked-button color="primary">Edit Post</button></div>
+      <div *ngIf="isPostedByCurrentUser()" class="p-2 ml-auto align-content-end">
+        <button mat-stroked-button color="primary" (click)="openEditFineModal(modalContent)">Edit Post</button>
+      </div>
     </div>
 
   </div>

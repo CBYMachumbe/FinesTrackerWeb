@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
 import {FinePost} from '../../Models/FinePost';
 import {User} from '../../Models/User';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -14,13 +15,18 @@ import {User} from '../../Models/User';
 export class FineComponent implements OnInit {
 
   @Input() finePost!: FinePost;
-  @Input() public currentUser!: User;
+  @Input() currentUser!: User;
+  @Input() modalContent!: TemplateRef<any>;
 
-  constructor(private mIC: MatIconRegistry, private domSanitizer: DomSanitizer) {
+
+  constructor(private mIC: MatIconRegistry, private domSanitizer: DomSanitizer,
+              private modalService: NgbModal) {
     this.mIC.addSvgIcon(
       "vote",
       this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/Images/ballot.svg")
     );
+
+
   }
 
   ngOnInit(): void {
@@ -28,5 +34,18 @@ export class FineComponent implements OnInit {
 
   public isPostedByCurrentUser(){
     return this.currentUser.userId === this.finePost.finerId;
+  }
+
+  openEditFineModal(content: TemplateRef<any>) {
+    this.modalService.open(content, {ariaLabelledBy: 'Edit-Fine-Modal'}).result.then
+    ((result) => {}, (reason) => {});
+  }
+
+  Vote(){
+    // submit or remove vote on post
+  }
+
+  editPost(){
+
   }
 }

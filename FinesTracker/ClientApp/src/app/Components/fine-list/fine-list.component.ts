@@ -1,9 +1,10 @@
-import {AfterViewInit, ChangeDetectorRef, Component, Input, NgZone, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, Input, NgZone, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FinePost} from '../../Models/FinePost';
 import {FinePostService} from '../../Services/FinePost.service';
 import {CdkVirtualScrollViewport, ScrollDispatcher} from '@angular/cdk/scrolling';
 import { filter } from 'rxjs/operators';
 import {User} from '../../Models/User';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-fine-list',
@@ -14,8 +15,6 @@ export class FineListComponent implements OnInit, AfterViewInit {
 
   @Input()
   public currentUser!: User;
-
-
   private pageLength = 10;
   private page: number;
   public isEndOfList = false;
@@ -25,7 +24,9 @@ export class FineListComponent implements OnInit, AfterViewInit {
   public viewport!: CdkVirtualScrollViewport;
   public finePost$: Array<FinePost | null>;
 
-  constructor(private service: FinePostService, private scrollDispatcher: ScrollDispatcher, private cd: ChangeDetectorRef, private zone:NgZone) {
+  constructor(private service: FinePostService,
+              private scrollDispatcher: ScrollDispatcher, private cd: ChangeDetectorRef,
+              private modalService: NgbModal) {
     this.page = 0;
     this.finePost$ = [];
   }
@@ -41,6 +42,8 @@ export class FineListComponent implements OnInit, AfterViewInit {
           this.cd.detectChanges();
     });
   }
+
+
 
   getFinePosts(): void {
     this.isLoading = true;

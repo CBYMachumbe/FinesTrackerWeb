@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-edit-fine',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-fine.component.css']
 })
 export class EditFineComponent implements OnInit {
+
+  @Input() modal!: any;
 
   constructor() { }
 
