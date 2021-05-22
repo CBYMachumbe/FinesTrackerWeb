@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {FinePost} from '../../Models/FinePost';
+import {FineService} from '../../Services/Fine.service';
+import {Fine} from '../../Models/Fine';
 
 @Component({
   selector: 'app-edit-fine',
@@ -16,13 +18,17 @@ export class EditFineComponent implements OnInit {
   public fineTextFormControl!: FormControl;
   public finePostFormGroup!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private fineService: FineService) { }
 
   ngOnInit(): void {
     this.setUpForm();
   }
 
   editPost(): void {
+    const fine = new Fine(this.finePost.fineId, this.fineTitleFormControl.value, this.fineTextFormControl.value);
+    this.fineService.updateFine(this.finePost.fineId, fine).subscribe(next =>{
+      // emit signal to FineList to refresh the posts
+    });
   }
 
   isNotChanged(): boolean {

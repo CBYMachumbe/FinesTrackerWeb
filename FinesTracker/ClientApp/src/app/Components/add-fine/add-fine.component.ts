@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {User} from '../../Models/User';
 import {UserService} from '../../Services/User.service';
 import {FinePost} from '../../Models/FinePost';
@@ -21,22 +21,20 @@ export class AddFineComponent implements OnInit{
   public fineTitleFormControl!: FormControl;
   public fineTextFormControl!: FormControl;
   public fineeIdFormControl!: FormControl;
-
   public finePostFormGroup!: FormGroup;
-
   public fineeId!: number;
 
   constructor(private userService: UserService, private finePostService: FinePostService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder, private cd: ChangeDetectorRef) {
 
   }
 
   ngOnInit(): void {
     this.getUsers();
     this.setUpForm()
-
     this.fine = new Fine(0, '','');
     this.finePostFormGroup.patchValue(this.fine);
+    this.cd.detectChanges();
   }
 
   sendFine(): void {

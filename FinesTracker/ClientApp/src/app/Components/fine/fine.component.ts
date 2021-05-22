@@ -1,6 +1,4 @@
 import {Component, Input, OnInit, TemplateRef} from '@angular/core';
-import {MatIconRegistry} from '@angular/material/icon';
-import {DomSanitizer} from '@angular/platform-browser';
 import {FinePost} from '../../Models/FinePost';
 import {User} from '../../Models/User';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -18,14 +16,7 @@ export class FineComponent implements OnInit {
   @Input() currentUser!: User;
 
 
-  constructor(private mIC: MatIconRegistry, private domSanitizer: DomSanitizer,
-              private modalService: NgbModal) {
-    this.mIC.addSvgIcon(
-      "vote",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/Images/ballot.svg")
-    );
-
-
+  constructor(private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -40,11 +31,8 @@ export class FineComponent implements OnInit {
     ((result) => {}, (reason) => {});
   }
 
-  Vote(){
+  Vote(): void{
     // submit or remove vote on post
-  }
-
-  editPost(){
-
+    //todo: make fineText 230 characters long
   }
 }

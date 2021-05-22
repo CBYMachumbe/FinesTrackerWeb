@@ -14,27 +14,41 @@
     </div>
     <div class="p-2">
     </div>
-    <div *ngIf="!isPostedByCurrentUser()" class="p-2" >
-      <button mat-raised-button color="primary">Vote</button>
-      <p class="text-center">{{ finePost.votes.length }} votes</p>
+    <div  class="p-2" >
+      <div *ngIf="!isPostedByCurrentUser()">
+        <button mat-icon-button
+                matTooltip="Agree with {{finePost.finer.name}}?"
+                matTooltipPosition="above"
+                color="primary"><mat-icon>how_to_vote</mat-icon></button>
+        <p class="text-center">{{ finePost.votes.length }} votes</p>
+      </div>
+
+    </div>
+    <div *ngIf="isPostedByCurrentUser()" class="p-2 align-content-end">
+      <button mat-icon-button
+              matTooltip="Edit Post"
+              matTooltipPosition="above"
+              color="primary" (click)="openEditFineModal(content)"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button
+              matTooltip="Delete Post"
+              matTooltipPosition="above"
+              color="warn" ><mat-icon>delete</mat-icon></button>
+      <p class="text-center text-primary" matTooltip="Your post has {{ finePost.votes.length }} votes">{{ finePost.votes.length }} votes</p>
+
     </div>
   </div>
-  <div class="ml-3 mt-0">
+  <div class="ml-3 mt-0 ">
     <p class="h3 m-0">{{ finePost.fine.fineTitle }}</p>
-    <div class="d-flex flex-row m-0">
-      <div class="p-2"><p>{{ finePost.fine.fineText }}</p></div> <!--//keep description at 255 characters-->
-      <div *ngIf="isPostedByCurrentUser()" class="p-2 ml-auto align-content-end">
-        <button mat-stroked-button color="primary" (click)="openEditFineModal(content)">Edit Post</button>
-      </div>
+    <div class="d-flex flex-row m-1">
+      <div class="p-2"><p class="mb-1">{{ finePost.fine.fineText }}</p></div> <!--//keep description at 255 characters-->
     </div>
-
   </div>
 </div>
 
 <ng-template #content let-modal>
   <div class="mat-app-background">
     <div class="modal-body">
-      <app-edit-fine [modal]="modal" [finePost]="finePost"></app-edit-fine>
+      <app-edit-fine [modal]="modal" [finePost]="finePost" ngbAutofocus></app-edit-fine>
     </div>
   </div>
 </ng-template>
