@@ -32,6 +32,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmPaymentComponent } from './Components/confirm-payment/confirm-payment.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -71,7 +72,8 @@ import { ConfirmPaymentComponent } from './Components/confirm-payment/confirm-pa
     MatTableModule,
     MatSortModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,14 +7,14 @@
         </div>
         <div class="p-2">
           <p class="text-muted h3 m-0">{{ finePost.finer.name}}</p>
-          <p class="text-primary">Fine on {{finePost.finee.name }}</p>
+          <p class="text-primary">Fine on {{finePost.finee.name}}</p>
         </div>
       </div>
 
     </div>
     <div class="p-2">
     </div>
-    <div class="p-2">
+    <div *ngIf="!isPostedByCurrentUser()" class="p-2" >
       <button mat-raised-button color="primary">Vote</button>
       <p class="text-center">{{ finePost.votes.length }} votes</p>
     </div>
@@ -23,9 +23,8 @@
     <p class="h3 m-0">{{ finePost.fine.fineTitle }}</p>
     <div class="d-flex flex-row m-0">
       <div class="p-2"><p>{{ finePost.fine.fineText }}</p></div> <!--//keep description at 255 characters-->
-      <div class="p-2 ml-auto align-content-end"><button mat-stroked-button color="primary">Edit Post</button></div>
+      <div *ngIf="isPostedByCurrentUser()" class="p-2 ml-auto align-content-end"><button mat-stroked-button color="primary">Edit Post</button></div>
     </div>
 
   </div>
 </div>
-

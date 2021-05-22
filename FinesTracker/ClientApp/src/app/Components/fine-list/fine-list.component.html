@@ -1,3 +1,15 @@
-<cdk-virtual-scroll-viewport orientation="vertical" class="view-port hide-y-bar" [itemSize]="200">
-  <app-fine *cdkVirtualFor="let finePost of finePost$" [finePost]="finePost"></app-fine>
+<cdk-virtual-scroll-viewport autosize orientation="vertical" class="view-port hide-x-bar" [itemSize]="200">
+  <app-fine *cdkVirtualFor="let finePost of finePost$" [finePost]="finePost" [currentUser]="currentUser"></app-fine>
+
+  <div *ngIf="isLoading">
+    <mat-spinner diameter="70" style="margin:0 auto;"></mat-spinner>
+  </div>
+
+  <div *ngIf="isEndOfList" class="mb-1 m-3">
+    <div class="justify-content-center align-content-center text-center">
+      <img src="assets/Images/poo.svg" width="90" height="90" > <br />
+      <p>You have reached the end of the feed!</p>
+    </div>
+  </div>
 </cdk-virtual-scroll-viewport>
+
