@@ -16,7 +16,6 @@ export class FineComponent implements OnInit {
 
   @Input() finePost!: FinePost;
   @Input() currentUser!: User;
-  @Input() modalContent!: TemplateRef<any>;
 
 
   constructor(private mIC: MatIconRegistry, private domSanitizer: DomSanitizer,

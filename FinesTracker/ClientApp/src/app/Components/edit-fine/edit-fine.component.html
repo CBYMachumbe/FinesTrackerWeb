@@ -1,10 +1,11 @@
 <form action="" class="form">
   <h2 class="mat-h2 mat-title m-0">Edit Fine</h2>
-  <footer class="blockquote-footer mb-3 text-primary">Fine on Calvin</footer>
+  <p class="blockquote-footer mb-3 text-primary">Fine on Calvin</p>
   <p>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Fine Title</mat-label>
-      <input matInput placeholder="Title"/>
+      <input matInput placeholder="Title"
+             type="text" required [formControl]="fineTitleFormControl"/>
       <mat-hint>Give your fine a helpful title</mat-hint>
     </mat-form-field>
   </p>
@@ -12,16 +13,19 @@
   <p>
     <mat-form-field appearance="outline" class="full-width">
       <mat-label>Fine Description</mat-label>
-      <textarea matInput placeholder="Description"></textArea>
+      <textarea matInput placeholder="Description"
+                id="fineText" required
+                [formControl]="fineTextFormControl" type="text"></textArea>
       <mat-hint>Give the fine a description</mat-hint>
     </mat-form-field>
   </p>
 
   <p class="text-right">
     <button mat-raised-button color="primary"
-            style="margin-left: 20px">Edit Fine</button>
+            style="margin-left: 20px"
+            (click)="editPost()"
+            [disabled]="finePostFormGroup.invalid || isNotChanged()">Edit Fine</button>
   </p>
-
 </form>
 
 

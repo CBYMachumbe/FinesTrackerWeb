@@ -24,9 +24,17 @@
     <div class="d-flex flex-row m-0">
       <div class="p-2"><p>{{ finePost.fine.fineText }}</p></div> <!--//keep description at 255 characters-->
       <div *ngIf="isPostedByCurrentUser()" class="p-2 ml-auto align-content-end">
-        <button mat-stroked-button color="primary" (click)="openEditFineModal(modalContent)">Edit Post</button>
+        <button mat-stroked-button color="primary" (click)="openEditFineModal(content)">Edit Post</button>
       </div>
     </div>
 
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="mat-app-background">
+    <div class="modal-body">
+      <app-edit-fine [modal]="modal" [finePost]="finePost"></app-edit-fine>
+    </div>
+  </div>
+</ng-template>
